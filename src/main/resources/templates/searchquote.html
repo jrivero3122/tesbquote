@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+
+</head>
+<body>
+
+    <nav th:replace="fragments :: nav"></nav>
+    <p th:text="${tileSizeLenght}"></p>
+    <p th:text="${tileSizeWidth}"></p>
+    <p th:text="${surface}"></p>
+    <p th:text="${typeOfTile}"></p>
+    <p th:text="${qtyOfTile}"></p>
+<span th:replace="fragments :: scripts"></span>
+</body>
+</html>
