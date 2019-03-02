@@ -4,14 +4,23 @@
 
 </head>
 <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
-
+<main>
+    <div class="page-loader">
+        <div class="loader">Loading...</div>
+    </div>
     <nav class="navbar navbar-custom navbar-fixed-top" th:replace="fragments :: nav"></nav>
     <div class="main">
-        <section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+        <!--<h1 th:text="${id}"></h1>-->
+        <!--<tr th:each="rate : ${rates}">-->
+            <!--<td th:text="${rate.rate}"></td>-->
+        <!--</tr>-->
+        <!--<div th:text="${rateFactors}"></div>-->
+
+        <section class="module bg-dark-30 about-page-header" data-background="assets/images/about_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                        <h1 class="module-title font-alt mb-0">Login-Register</h1>
+                        <h1 class="module-title font-alt mb-0">Profile</h1>
                     </div>
                 </div>
             </div>
@@ -19,47 +28,45 @@
         <section class="module">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-5 col-sm-offset-1 mb-sm-40">
-                        <h4 class="font-alt">Login</h4>
-                        <hr class="divider-w mb-10">
-                        <div th:if="${param.error}">
-                            Invalid username and password.
-                        </div>
-                        <div th:if="${param.logout}">
-                            You have been logged out.
-                        </div>
-                        <form class="form" th:action="@{/login-register}" method="post">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <h4 class="font-alt mb-0">Update You Profile</h4>
+                        <hr class="divider-w mt-10 mb-20">
+                        <form class="form" th:action="@{/updateprofile}" role="form" method="post">
                             <div class="form-group">
-                                <input class="form-control" type="text" name="username" placeholder="Username"/>
+                                <label for="username">Username</label>
+                                <input class="form-control" id="username"  name="username" disabled="" type="text" th:placeholder="${username}"/>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="password" name="password" placeholder="Password"/>
+                                <label for="email">Email</label>
+                                <input class="form-control" id="email" name="email" type="text" th:placeholder="${email}"/>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-round btn-b">Login</button>
-                            </div>
-                            <div class="form-group"><a href="">Forgot Password?</a></div>
-                        </form>
-                    </div>
-                    <div class="col-sm-5">
-                        <h4 class="font-alt">Register</h4>
-                        <hr class="divider-w mb-10">
-                        <form class="form" method="post">
-                            <div class="form-group">
-                                <input class="form-control" id="E-mail" type="text" name="email" placeholder="Email"/>
+                                <label for="name">Name</label>
+                                <input class="form-control" id="name" type="text" name="name"/>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="username" type="text" name="username" placeholder="Username"/>
+                                <label for="lastName">Last Name</label>
+                                <input class="form-control" id="lastName" type="text" name="lastName"/>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="password" type="password" name="password" placeholder="Password"/>
-                            </div>
-                            <div th:text="${vpassword}"></div>
-                            <div class="form-group">
-                                <input class="form-control" id="re-password" type="password" name="confirmPassword" placeholder="Re-enter Password"/>
+                                <label for="lastName">Phone</label>
+                                <input class="form-control" id="phone" type="text" name="phone"/>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-block btn-round btn-b">Register</button>
+                                <h2>My Rates</h2>
+                                <div class="form-group" th:each="rateFactor : ${rateFactors}">
+                                    <label th:text="${rateFactor.rateFactor}"></label>
+                                    <input class="form-control input-sm" type="text" th:name="${rateFactor.rateFactor}">
+                                </div>
+                            </div>
+                            <!--<div th:each="rateFactor : ${rateFactors}">-->
+                                <!--<div class="form-group">-->
+                                    <!--<div th:text=${rateFactor.rateFactor"></div>-->
+                                    <!--<input class="form-control input-sm"  type="text" th:name="${rateFactor.rateFactor"/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="form-group">
+                                <button class="btn btn-round btn-b" type="submit">Update</button>
                             </div>
                         </form>
                     </div>
@@ -141,7 +148,7 @@
         </footer>
     </div>
     <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
-    </main>
+</main>
 
 <span th:replace="fragments :: scripts"></span>
 </body>

@@ -11,6 +11,23 @@
     <p th:text="${surface}"></p>
     <p th:text="${typeOfTile}"></p>
     <p th:text="${qtyOfTile}"></p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
 <span th:replace="fragments :: scripts"></span>
 </body>
 </html>
