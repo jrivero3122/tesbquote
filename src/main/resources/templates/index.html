@@ -129,37 +129,44 @@
         <section class="module">
             <div class="container">
                 <div class="row post-masonry post-columns">
-                    <div th:each="rate : ${rates}"  class="col-sm-6 col-md-3 col-lg-3">
+                    <!--<div th:each="rate : ${rates}"  class="col-sm-6 col-md-3 col-lg-3">-->
+                        <!--<div class="post">-->
+                            <!--&lt;!&ndash;<div class="post-thumbnail"><a href="#"><img src="assets/images/post-2.jpg" alt="Blog-post Thumbnail"/></a></div>&ndash;&gt;-->
+                            <!--<div class="post-header font-alt">-->
+                                <!--<h2 th:text="${rate.user.username}" class="post-title"><a href="#">Our trip to the Alps</a></h2>-->
+                                <!--<div th:text="${rate.user.email}" class="post-meta"></div>-->
+                            <!--</div>-->
+                            <!--<div class="post-entry">-->
+                                <!--<h1 th:text="${'$ ' + rate.rate*surface}"></h1>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<div class="post-more"><a class="more-link" href="#">Read more</a></div>&ndash;&gt;-->
+                        <!--</div>-->
+                        <!---->
+                    <!--</div>-->
+
+
+                    <div th:each="user : ${users}"  class="col-sm-6 col-md-3 col-lg-3">
                         <div class="post">
                             <!--<div class="post-thumbnail"><a href="#"><img src="assets/images/post-2.jpg" alt="Blog-post Thumbnail"/></a></div>-->
                             <div class="post-header font-alt">
-                                <h2 th:text="${rate.user.username}" class="post-title"><a href="#">Our trip to the Alps</a></h2>
-                                <div th:text="${rate.user.email}" class="post-meta"></div>
+                                <h2 th:text="${user.name + ' ' + user.lastName}" class="post-title"><a href="#">Our trip to the Alps</a></h2>
+                                <div th:text="${user.email}" class="post-meta"></div>
                             </div>
                             <div class="post-entry">
-                                <h1 th:text="${'$ ' + rate.rate*surface}"></h1>
+
+                                <!--#numbers.formatDecimal(abc.value, 0, 'COMMA', 2, 'POINT')}-->
+                                <h1 th:text="${'$ ' + #numbers.formatDecimal((user.rate*surface), 0, 'COMMA', 2,'POINT')}"></h1>
                             </div>
                             <!--<div class="post-more"><a class="more-link" href="#">Read more</a></div>-->
                         </div>
+
                     </div>
                 </div>
             </div>
         </section>
 
         <hr class="divider-d">
-        <footer class="footer bg-dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <p class="copyright font-alt">&copy; 2017&nbsp;<a href="index.html">TitaN</a>, All Rights Reserved</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <footer th:replace="fragments :: footer"></footer>
     </div>
     <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
 </main>

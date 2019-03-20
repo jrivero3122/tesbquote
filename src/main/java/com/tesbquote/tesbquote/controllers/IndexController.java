@@ -1,10 +1,10 @@
 package com.tesbquote.tesbquote.controllers;
 
 
-import com.tesbquote.tesbquote.models.Rate;
-import com.tesbquote.tesbquote.models.RateFactor;
-import com.tesbquote.tesbquote.models.data.RateDao;
-import com.tesbquote.tesbquote.models.data.RateFactorDao;
+//import com.tesbquote.tesbquote.models.Rate;
+//import com.tesbquote.tesbquote.models.RateFactor;
+//import com.tesbquote.tesbquote.models.data.RateDao;
+//import com.tesbquote.tesbquote.models.data.RateFactorDao;
 import com.tesbquote.tesbquote.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,11 +25,11 @@ public class IndexController {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private RateDao rateDao;
+//    @Autowired
+//    private RateDao rateDao;
 
-    @Autowired
-    private RateFactorDao rateFactor;
+//    @Autowired
+//    private RateFactorDao rateFactor;
 
     @RequestMapping(value = "")
     public String index(Model model){
@@ -48,6 +48,8 @@ public class IndexController {
 //        List<Rate> finalRate =
 
 //        Iterable<Rate> data = rateDao.findAll();
+
+        model.addAttribute("title", "Miami Tile Installers");
 
 
         Float tileSizeLenght = valueOf(request.getParameter("tileSizeLenght"));
@@ -70,8 +72,8 @@ public class IndexController {
         model.addAttribute("typeOfTile",typeOfTile);
 //        model.addAttribute("finalRate",finalRate);
 
-//        model.addAttribute("users",userDao.findAll());
-        model.addAttribute("rates",rateDao.findAll());
+        model.addAttribute("users",userDao.findAll());
+//        model.addAttribute("rates",rateDao.findAll());
 //        model.addAttribute("rates",data);
 
 

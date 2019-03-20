@@ -5,8 +5,8 @@ package com.tesbquote.tesbquote.models;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.ArrayList;
+//import javax.validation.constraints.Size;
+//import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,12 +18,14 @@ public class User {
     @Column(name = "id", unique = true)
     private int id;
 
-    @NotNull
-    @Size(min=5, max=15)
-    @Column(name = "username")
-    private String username;
+//    @NotNull
+//    @Size(min=5, max=15)
+//    @Column(name = "username")
+//    private String username;
+
 
     @Email
+    @NotNull
     @Column(name = "email")
     private String email;
 
@@ -31,12 +33,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @NotNull
-    @Column(name = "confirmPassword")
-    private String confirmPassword;
+//    @NotNull
+//    @Column(name = "confirmPassword")
+//    private String confirmPassword;
 
-    @Column(name = "role")
-    private int role;
+//    @Column(name = "role")
+//    private int role;
 
     @Column(name = "name")
     private String name;
@@ -45,37 +47,30 @@ public class User {
     private String lastName;
 
     @Column(name = "phone")
-    private int phone;
+    private String phone;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<Rate> rateFactors = new ArrayList<>();
+    @Column(name = "rate")
+    private Float rate;
 
-    public  User(){
+//    @OneToMany
+//    @JoinColumn(name = "user_id")
+//    private List<Rate> rateFactors = new ArrayList<>();
 
+
+    public User() {
     }
 
-    public User(String username, String password, String confirmPassword, String email) {
-        this.username = username;
+    public User(@Email @NotNull String email, @NotNull String password, String name, String lastName, String phone, Float rate) {
         this.email = email;
         this.password = password;
-        this.confirmPassword = confirmPassword;
+        this.name = name;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.rate = rate;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -94,22 +89,6 @@ public class User {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
-
     public String getName() {
         return name;
     }
@@ -126,15 +105,19 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public List<Rate> getRateFactors() {
-        return rateFactors;
+    public Float getRate() {
+        return rate;
+    }
+
+    public void setRate(Float rate) {
+        this.rate = rate;
     }
 }
